@@ -1,0 +1,14 @@
+<section data-ng-controller="SummariesController" data-ng-init="findOne()">
+  <span>{{summary.created | date:'medium'}}</span> /
+  <span>{{summary.user.name}}</span>
+  <h2 data-editable-text="summary.title">{{summary.title}}</h2>
+  <div data-ng-if="hasAuthorization(summary)">
+    <a class="btn" href="/#!/summarys/{{summary._id}}/edit">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn" data-ng-click="remove(summary);">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <div data-editable-textarea="summary.content">{{summary.content}}</div>
+</section>

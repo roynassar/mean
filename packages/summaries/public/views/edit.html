@@ -1,0 +1,34 @@
+<section data-ng-controller="SummariesController">
+  <div class="modal-header">
+    <h3>Edit</h3>
+  </div>
+  <div class="modal-body">
+    <form name="summaryForm" class="form-horizontal" role="form" novalidate>
+      <div class="form-group" ng-class="{ 'has-error' : submitted && summaryForm.title.$invalid }">
+        <label mean-token="'edit-title'" for="title" class="col-md-2 control-label">Title</label>
+        <div class="col-md-10">
+          <input name="title" type="text" class="form-control" data-ng-model="summary.title" id="title" placeholder="Title" required>
+          <div ng-show="submitted && summaryForm.title.$invalid" class="help-block">
+            <p ng-show="summaryForm.title.$error.required">Title is required</p>
+          </div>
+        </div>
+
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : submitted && summaryForm.content.$invalid }">
+        <label mean-token="'edit-content'" for="content" class="col-md-2 control-label">Content</label>
+        <div class="col-md-10">
+          <textarea name="content" data-ng-model="summary.content" id="content" cols="100" rows="20" placeholder="Content" class="form-control" required></textarea>
+          <div ng-show="submitted && summaryForm.content.$invalid" class="help-block">
+            <p ng-show="summaryForm.content.$error.required">Content is required</p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="modal-footer">
+    <button mean-token="'edit-submit'" data-ng-click="update(summaryForm.$valid)" type="submit" class="btn btn-default">Submit</button>
+    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+  </div>
+
+</section>

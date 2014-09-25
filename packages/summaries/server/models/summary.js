@@ -25,6 +25,12 @@ var SummarySchema = new Schema({
     required: true,
     trim: true
   },
+  notebook: {
+    type: String,
+    required: false,
+    trim: true,
+    default: 'unclassified'
+  },
   user: {
     type: Schema.ObjectId,
     ref: 'User'

@@ -5,21 +5,26 @@
 		<button class="btn" ng-click="openCreate()">Add summary</button>
 		<!--Sidebar content-->
 		<h2>Filters</h2>
-		Search: <input ng-model="query">
-		Sort by:
-		<select ng-model="orderProp">
-			<option value="title">Alphabetical</option>
-			<option value="created">Newest</option>
+		Search: <input ng-model="search.$">
+		Notebooks:
+		<select ng-model="search.notebook">
+			<option value="todo">todo</option>
+			<option value="unclassified">unclassified</option>
 		</select>
-
+		<ul>
+			<li data-ng-repeat="notebook in notebooks">
+				{{notebook.title}}
+			</li>
+		</ul>
 	</div>
 
 	<div class="col-md-2">
 		<section data-ng-init="find()">
 			<ul class="summaries unstyled">
-				<li data-ng-repeat="summary in summaries | filter:query | orderBy:orderProp">
+				<li ng-click="view(summary)" data-ng-repeat="summary in summaries | filter:search | limitTo:20 ">
 					<h4>{{summary.title}}</h4>
 					<span>{{summary.created | date:'d/M/yy'}}</span>
+					<span>{{summary.notebook}}</span>
 				</li>
 			</ul>
 			<h1 data-ng-hide="!summaries || summaries.length">No summaries yet. <br> Why don't you <a href="/#!/summaries/create">Create One</a>?</h1>
@@ -28,25 +33,20 @@
 
 	<div class="col-md-8">
 
-		<section data-ng-init="find()">
-			<ul class="summaries unstyled">
-				<li data-ng-repeat="summary in summaries | filter:query | orderBy:orderProp">
-					<h2>
-						{{summary.title}}
-						<span data-ng-if="hasAuthorization(summary)">
-							<button class="btn" ng-click="openUpdate(summary)">
-								<i class="glyphicon glyphicon-edit"></i>
-							</button>
-							<a class="btn" data-ng-click="remove(summary);">
-								<i class="glyphicon glyphicon-trash"></i>
-							</a>
-						</span>
-						<span>{{summary.created | date:'medium'}}</span>
-					</h2>
-					<pre>{{summary.content}}</pre>
-				</li>
-			</ul>
-			<h1 data-ng-hide="!summaries || summaries.length">No summaries yet. <br> Why don't you <a href="/#!/summaries/create">Create One</a>?</h1>
+		<section data-ng-if="summary">
+			<h2>
+				{{summary.title}}
+				<span data-ng-if="hasAuthorization(summary)">
+					<button class="btn" ng-click="openUpdate(summary)">
+						<i class="glyphicon glyphicon-edit"></i>
+					</button>
+					<a class="btn" data-ng-click="remove(summary);">
+						<i class="glyphicon glyphicon-trash"></i>
+					</a>
+				</span>
+				<small>{{summary.created | date:'medium'}}</small>
+			</h2>
+			<pre>{{summary.content}}</pre>
 		</section>
 
 	</div>

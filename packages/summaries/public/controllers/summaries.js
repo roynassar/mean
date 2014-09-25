@@ -58,9 +58,17 @@ angular.module('mean.summaries').controller('SummariesController', ['$scope', '$
     };
 
     $scope.find = function() {
+      // console.log('find');
       Summaries.query(function(summaries) {
         $scope.summaries = summaries;
       });
+      // Notebooks.query(function(notebooks) {
+      //   $scope.notebooks = notebooks;
+      // });
+    };
+
+    $scope.view = function(summary) {
+      $scope.summary = summary;
     };
 
   }

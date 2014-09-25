@@ -1,9 +1,9 @@
 {
   "name": "articles",
   "version": "0.0.1",
-  "description": "Articles example package",
+  "description": "Notebooks",
   "author": {
-    "name": "Linnovate"
+    "name": "roy"
   },
   "mean": "0.4.x",
   "engines": {

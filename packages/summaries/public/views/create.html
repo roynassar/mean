@@ -1,33 +1,42 @@
 <section data-ng-controller="SummariesController">
-  <div class="modal-header">
-    <h3>Add</h3>
-  </div>
-  <div class="modal-body">
-    <form name="summaryForm" class="form-horizontal" role="form" novalidate>
-      <div class="form-group" ng-class="{ 'has-error' : submitted && summaryForm.title.$invalid }">
-        <label mean-token="'create-title'" class="col-md-3 control-label">Title</label>
-        <div class="col-md-9">
-          <input name="title" type="text" class="form-control" data-ng-model="title" id="title" placeholder="Title" required>
-          <div ng-show="submitted && summaryForm.title.$invalid" class="help-block">
-            <p ng-show="summaryForm.title.$error.required">Title is required</p>
-          </div>
-        </div>
+	<div class="modal-header">
+		<h3>Add</h3>
+	</div>
+	<div class="modal-body">
+		<form name="summaryForm" class="form-horizontal" role="form" novalidate>
 
-      </div>
-      <div class="form-group" ng-class="{ 'has-error' : submitted && summaryForm.content.$invalid }">
-        <label mean-token="'create-content'" for="content" class="col-md-3 control-label">Content</label>
-        <div class="col-md-9">
-          <textarea name="content" data-ng-model="content" id="content" cols="100" rows="20" placeholder="Content" class="form-control" required></textarea>
-          <div ng-show="submitted && summaryForm.content.$invalid" class="help-block">
-            <p ng-show="summaryForm.content.$error.required">Content is required</p>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
+			<div class="form-group" ng-class="{ 'has-error' : submitted && summaryForm.title.$invalid }">
+				<label mean-token="'create-title'" class="col-md-3 control-label">Title</label>
+				<div class="col-md-9">
+					<input name="title" type="text" class="form-control" data-ng-model="title" id="title" placeholder="Title" required>
+					<div ng-show="submitted && summaryForm.title.$invalid" class="help-block">
+						<p ng-show="summaryForm.title.$error.required">Title is required</p>
+					</div>
+				</div>
+			</div>
 
-  <div class="modal-footer">
-    <button type="submit" data-ng-click="create(summaryForm.$valid)" class="btn btn-info">Submit</button>
-    <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-  </div>
+			<div class="form-group">
+				<label mean-token="'create-notebook'" class="col-md-3 control-label">Notebook</label>
+				<div class="col-md-9">
+					<input name="notebook" type="text" class="form-control" data-ng-model="notebook" id="notebook" placeholder="Notebook">
+				</div>
+			</div>
+
+			<div class="form-group" ng-class="{ 'has-error' : submitted && summaryForm.content.$invalid }">
+				<label mean-token="'create-content'" for="content" class="col-md-3 control-label">Content</label>
+				<div class="col-md-9">
+					<textarea name="content" data-ng-model="content" id="content" cols="100" rows="20" placeholder="Content" class="form-control" required></textarea>
+					<div ng-show="submitted && summaryForm.content.$invalid" class="help-block">
+						<p ng-show="summaryForm.content.$error.required">Content is required</p>
+					</div>
+				</div>
+			</div>
+
+		</form>
+	</div>
+
+	<div class="modal-footer">
+		<button type="submit" data-ng-click="create(summaryForm.$valid)" class="btn btn-info">Submit</button>
+		<button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+	</div>
 </section>
